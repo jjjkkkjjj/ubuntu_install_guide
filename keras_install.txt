@@ -10,4 +10,4 @@ pip install --upgrade tensorflow-gpu
 
 pip install keras
 
-
+conda install -c conda-forge python-lmdb=0.92

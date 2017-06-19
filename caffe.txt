@@ -96,10 +96,14 @@ cd ../
 make pycaffe -j16
 export PYTHONPATH=~/caffe/python/:$PYTHONPATH
 
-# Edit "~/profile" manually (Write below paths)
-# export PATH=$PATH:/usr/local/cuda/bin
-# export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
-# export LD_LIBRARY_PATH=/usr/local/cudnn-5.1:$LD_LIBRARY_PATH
-# export LD_LIBRARY_PATH=/usr/lib/openblas-base:$LD_LIBRARY_PATH
-# export PYTHONPATH=/media/junkado/hdd3tb/caffe/python/:$PYTHONPATH
+# Edit "~/.bashrc" manually (Write below paths)
+export PATH=$PATH:/usr/local/cuda/bin
+export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=/usr/local/cudnn-5.1:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=/usr/lib/openblas-base:$LD_LIBRARY_PATH
+export PYTHONPATH=/media/junkado/hdd3tb/caffe/python/:$PYTHONPATH
+
+pycharmではPYTHONPATHを何故か読み取らないので
+default settings-> interpreter-> more ->python2 ->show path~(一番下の変なアイコン) -> /media/junkado/hdd3tb/caffe/python/　を＋
+
 
