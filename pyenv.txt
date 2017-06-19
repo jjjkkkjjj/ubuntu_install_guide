@@ -1,0 +1,28 @@
+.bashrcに以下を書き込む
+
+# pyenv
+export PYENV_ROOT="${HOME}/.pyenv"
+
+if [ -d "${PYENV_ROOT}" ]; then
+
+    export PATH=${PYENV_ROOT}/bin:$PATH
+
+    eval "$(pyenv init -)"
+
+fi
+
+# pyenv alias
+alias activate="source $PYENV_ROOT/versions/anaconda3-2.2.0/bin/activate"
+
+sudo apt-get update
+sudo apt-get install git
+git clone https://github.com/yyuu/pyenv.git ~/.pyenv
+pyenv install -l | grep ana
+pyenv install anaconda3-2.2.0
+pyenv rehash
+pyenv global anaconda3-2.2.0
+
+conda update conda
+
+conda create -n py2 python=2.7 anaconda
+

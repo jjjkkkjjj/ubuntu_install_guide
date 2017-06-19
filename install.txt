@@ -1,0 +1,66 @@
+頑張ってする
+
+UEFIから起動
+
+最初が黒い画面！！
+
+something else選択
+・パーティション
+logical
+end
+swap
+
+primary
+begin
+Ext4
+
+boot loader
+
+~display~
+
+setting->display->sticky edge off
+
+〜日本語の入力〜
+sudo apt-get install fcitx-mozc
+
+settingからlanguage support
+installクリック
+
+keyboard input~ を fctix
+
+一回ログアウト
+
+もう一回setting text entryで
+mozc追加
+
+〜pycharm,clion〜
+
+tar xzvf *.tar.gz
+cd */bin
+bash ./*.sh
+
+all user check
+after turning on
+configure->create desktop entry
+
+pycharm設定
+default settings->project interpreter->設定マーク->more->show more~(一番下)->+
+/bin/bash -login -i
+
+python 3to2
+sudo apt install python3-3to2
+
+
+〜google ドライブ〜
+sudo add-apt-repository ppa:alessandro-strada/ppa
+sudo apt-get update
+
+sudo apt-get install google-drive-ocamlfuse
+mkdir ~/googledrive
+google-drive-ocamlfuse
+
+ウェブが起動、ログイン
+
+google-drive-ocamlfuse ~/googledrive
+
+

@@ -1,0 +1,27 @@
+
+
+sudo apt install ffmpeg libopencv-dev libgtk-3-dev python-numpy python3-numpy libdc1394-22 libdc1394-22-dev libjpeg-dev libpng12-dev libtiff5-dev libjasper-dev libavcodec-dev libavformat-dev libswscale-dev libxine2-dev libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev libtbb-dev qtbase5-dev libfaac-dev libmp3lame-dev libopencore-amrnb-dev libopencore-amrwb-dev libtheora-dev libvorbis-dev libxvidcore-dev x264 unzip
+conda install qt
+conda install pyopengl
+//conda install -c conda-forge tbb=2017_20170226
+sudo apt-get autoremove libtiff5-dev
+sudo apt install cmake
+sudo apt-get install libtiff5-dev
+sudo apt-get install freeglut3 freeglut3-dev
+sudo apt-get install doxygen doxygen-gui graphviz
+py2
+conda install libgcc
+LD_LIBRARY_PATHは一時的に解除
+
+PATHは絶対通す！！！！(.profile)
+export PYTHON_INCLUDE_DIRS=$PYENV_ROOT/versions/anaconda3-2.2.0/include/python3.4m:$PYENV_ROOT/versions/anaconda3-2.2.0/envs/py2/include/python2.7
+export PYTHON_LIBRARIES=$PYENV_ROOT/versions/anaconda3-2.2.0/lib/libpython3.4m.so:$PYENV_ROOT/versions/anaconda3-2.2.0/envs/py2/lib/libpython2.7.so
+
+mkdir build
+cd build/
+cmake -D CMAKE_BUILD_TYPE=RELEASE -D BUILD_NEW_PYTHON_SUPPORT=ON -D BUILD_opencv_python2=ON -D BUILD_opencv_python3=ON -D BUILD_TIFF=ON -D ENABLE_SOLUTION_FOLDERS=ON -D CMAKE_INSTALL_PREFIX=/usr/local -D OPENCV_EXTRA_MODULES_PATH=$HOME/opencv/opencv-3.1.0/opencv_contrib-master/modules -D PYTHON2_EXECUTABLE=$PYENV_ROOT/versions/anaconda3-2.2.0/envs/py2/bin/python2.7 -D PYTHON2_INCLUDE_DIR=$PYENV_ROOT/versions/anaconda3-2.2.0/envs/py2/include/python2.7 -D PYTHON2_LIBRARY=$PYENV_ROOT/versions/anaconda3-2.2.0/envs/py2/lib/libpython2.7.so -D PYTHON2_NUMPY_INCLUDE_DIRS=$PYENV_ROOT/versions/anaconda3-2.2.0/envs/py2/lib/python2.7/site-packages/numpy/core/include -D PYTHON2_PACKAGES_PATH=$PYENV_ROOT/versions/anaconda3-2.2.0/envs/py2/lib/python2.7/site-packages -D PYTHON3_EXECUTABLE=$PYENV_ROOT/versions/anaconda3-2.2.0/bin/python3.4m -D PYTHON3_INCLUDE_DIR=$PYENV_ROOT/versions/anaconda3-2.2.0/include/python3.4m -D PYTHON3_LIBRARY=$PYENV_ROOT/versions/anaconda3-2.2.0/lib/libpython3.4m.so -D PYTHON3_NUMPY_INCLUDE_DIRS=$PYENV_ROOT/versions/anaconda3-2.2.0/lib/python3.4/site-packages/numpy/core/include -D PYTHON3_PACKAGES_PATH=$PYENV_ROOT/versions/anaconda3-2.2.0/lib/python3.4/site-packages -D WITH_TBB=ON -D WITH_V4L=ON -D WITH_QT=ON -D WITH_OPENGL=ON ..
+
+make -j16
+sudo make install
+
+

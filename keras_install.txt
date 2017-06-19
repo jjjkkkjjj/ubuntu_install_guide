@@ -1,0 +1,12 @@
+	
+pyenv global anaconda~/py2
+activate py2
+
+~tensorflow~
+pip install --upgrade tensorflow-gpu 
+
+cd ~
+pip install keras
+
+conda install nomkl numpy scipy scikit-learn numexpr
+pip install configobj

@@ -1,0 +1,196 @@
+CUDA
+8.0
+
+
+https://developer.nvidia.com/cuda-downloads
+
+deb(local)
+
+cd Downloads
+sudo dpkg -i cuda-repo-ubuntu1604-8-0-local-ga2_8.0.61-1_amd64.deb
+sudo apt-get update
+sudo apt-get install cuda
+
+cudnn
+tar xzvf cudnn-8.0-linux-x64-v5.1.tgz 
+sudo mkdir /usr/local/cudnn-5.1
+sudo cp -r cuda/ /usr/local/cudnn-5.1
+sudo cp -a cuda/lib64/* /usr/local/lib/
+sudo cp -a cuda/include/* /usr/local/include/
+sudo ldconfig 
+→何も出なければOK
+➔libEGL.so.1 is not a symbolic linkがどうのこうの〜なら
+
+sudo mv /usr/lib/nvidia-375/libEGL.so.1 /usr/lib/nvidia-375/libEGL.so.1.org
+sudo mv /usr/lib32/nvidia-375/libEGL.so.1 /usr/lib32/nvidia-375/libEGL.so.1.org
+sudo ln -s /usr/lib/nvidia-375/libEGL.so.375.39 /usr/lib/nvidia-375/libEGL.so.1
+sudo ln -s /usr/lib32/nvidia-375/libEGL.so.375.39 /usr/lib32/nvidia-375/libEGL.so.1
+
+~caffe install~
+　symbolic linkをはる
+cd /usr/lib/x86_64-linux-gnu/
+sudo ln -s libhdf5_serial.so.10.1.0 libhdf5.so
+sudo ln -s libhdf5_serial_hl.so.10.0.2 libhdf5_hl.so
+
+sudo apt-get install libprotobuf-dev libleveldb-dev libsnappy-dev libhdf5-serial-dev protobuf-compiler
+sudo apt-get install libatlas-base-dev 
+sudo apt-get install --no-install-recommends libboost-all-dev
+sudo apt-get install libgflags-dev libgoogle-glog-dev liblmdb-dev
+sudo apt-get install  python-pip
+
+export PATH=$PATH:/usr/local/cuda/bin
+export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=/usr/local/cudnn-8.0:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$PYENV_ROOT/versions/anaconda3-2.2.0/envs/py2/lib"
+
+cd いれたいとこ
+git clone https://github.com/CMU-Perceptual-Computing-Lab/caffe_train.git
+
+cd caffe
+cp Makefile.config.example Makefile.config
+
+Makefile.config
+USE_CUDNN := 1
+ 
+OPENCV_VERSION := 3
+ 
+WITH_PYTHON_LAYER := 1
+ 
+# 通常のPythonのパスを通さず、AnacondaのPythonにパスを通す
+#PYTHON_INCLUDE := /usr/include/python2.7 \
+#                /usr/lib/python2.7/dist-packages/numpy/core/include
+# Anaconda Python distribution is quite popular. Include path:
+# Verify anaconda location, sometimes it's in root.
+ ANACONDA_HOME := $(PYENV_ROOT)/versions/anaconda3-2.2.0/envs/py2
+ PYTHON_INCLUDE := $(ANACONDA_HOME)/include \
+                 $(ANACONDA_HOME)/include/python2.7 \
+                 $(ANACONDA_HOME)/lib/python2.7/site-packages/numpy/core/include \
+ 
+#PYTHON_LIB := /usr/lib
+ PYTHON_LIB := $(ANACONDA_HOME)/lib
+ 
+# 必要な部分を書き加える
+INCLUDE_DIRS := $(PYTHON_INCLUDE) /usr/local/include /usr/include/hdf5/serial
+
+
+sudo apt install libprotobuf-dev libleveldb-dev libsnappy-dev libopencv-dev libhdf5-serial-dev protobuf-compiler
+sudo apt install --no-install-recommends libboost-all-dev
+
+make all -j16
+make test -j16
+make runtest
+
+cd python
+sudo apt install python-pip
+for req in $(cat requirements.txt); do pip install $req: done
+#sudo pip install -r requirements.txt
+make pycaffe -j8
+export PYTHONPATH=~/caffe/python/:$PYTHONPATH
+
+# Edit "~/profile" manually (Write below paths)
+# export PATH=$PATH:/usr/local/cuda/bin
+# export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
+# export LD_LIBRARY_PATH=/usr/local/cudnn-8.0:$LD_LIBRARY_PATH
+# export LD_LIBRARY_PATH=/usr/lib/openblas-base:$LD_LIBRARY_PATH
+# export PYTHONPATH=~/caffe/python/:$PYTHONPATH
+CUDA
+8.0
+
+
+https://developer.nvidia.com/cuda-downloads
+
+deb(local)
+
+cd Downloads
+sudo dpkg -i cuda-repo-ubuntu1604-8-0-local-ga2_8.0.61-1_amd64.deb
+sudo apt-get update
+sudo apt-get install cuda
+
+libEGL.so.1 is not a symbolic linkがどうのこうの〜なら
+
+sudo mv /usr/lib/nvidia-375/libEGL.so.1 /usr/lib/nvidia-375/libEGL.so.1.org
+sudo mv /usr/lib32/nvidia-375/libEGL.so.1 /usr/lib32/nvidia-375/libEGL.so.1.org
+sudo ln -s /usr/lib/nvidia-375/libEGL.so.375.39 /usr/lib/nvidia-375/libEGL.so.1
+sudo ln -s /usr/lib32/nvidia-375/libEGL.so.375.39 /usr/lib32/nvidia-375/libEGL.so.1
+
+
+cudnn
+tar xzvf cudnn-8.0-linux-x64-v5.1.tgz 
+sudo mkdir cudnn-5.1
+sudo cp -r cuda/ /usr/local/cudnn-5.1
+sudo cp -a cuda/lib64/* /usr/local/lib/
+sudo cp -a cuda/include/* /usr/local/include/
+sudo ldconfig 
+→何も出なければOK
+
+~caffe install~
+　symbolic linkをはる
+cd /usr/lib/x86_64-linux-gnu/
+sudo ln -s libhdf5_serial.so.10.1.0 libhdf5.so
+sudo ln -s libhdf5_serial_hl.so.10.0.2 libhdf5_hl.so
+
+sudo apt-get install libprotobuf-dev libleveldb-dev libsnappy-dev libhdf5-serial-dev protobuf-compiler
+sudo apt-get install libatlas-base-dev 
+sudo apt-get install --no-install-recommends libboost-all-dev
+sudo apt-get install libgflags-dev libgoogle-glog-dev liblmdb-dev
+sudo apt-get install  python-pip
+
+export PATH=$PATH:/usr/local/cuda/bin
+export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=/usr/local/cudnn-8.0:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$PYENV_ROOT/versions/anaconda3-2.2.0/envs/py2/lib"
+
+cd いれたいとこ
+git clone https://github.com/CMU-Perceptual-Computing-Lab/caffe_train.git
+
+cd caffe
+cp Makefile.config.example Makefile.config
+
+Makefile.config
+USE_CUDNN := 1
+ 
+OPENCV_VERSION := 3
+ 
+WITH_PYTHON_LAYER := 1
+ 
+# 通常のPythonのパスを通さず、AnacondaのPythonにパスを通す
+#PYTHON_INCLUDE := /usr/include/python2.7 \
+#                /usr/lib/python2.7/dist-packages/numpy/core/include
+# Anaconda Python distribution is quite popular. Include path:
+# Verify anaconda location, sometimes it's in root.
+ ANACONDA_HOME := $(PYENV_ROOT)/versions/anaconda3-2.2.0/envs/py2
+ PYTHON_INCLUDE := $(ANACONDA_HOME)/include \
+                 $(ANACONDA_HOME)/include/python2.7 \
+                 $(ANACONDA_HOME)/lib/python2.7/site-packages/numpy/core/include \
+ 
+#PYTHON_LIB := /usr/lib
+ PYTHON_LIB := $(ANACONDA_HOME)/lib
+ 
+# 必要な部分を書き加える
+INCLUDE_DIRS := $(PYTHON_INCLUDE) /usr/local/include /usr/include/hdf5/serial
+
+
+sudo apt install libprotobuf-dev libleveldb-dev libsnappy-dev libopencv-dev libhdf5-serial-dev protobuf-compiler
+sudo apt install --no-install-recommends libboost-all-dev
+
+make all -j16
+make test -j16
+make runtest
+
+cd python
+sudo apt install python-pip
+for req in $(cat requirements.txt); do pip install $req: done
+#sudo pip install -r requirements.txt
+cd ../
+make pycaffe -j8
+export PYTHONPATH=~/caffe/python/:$PYTHONPATH
+
+# Edit "~/.profile" manually (Write below paths)
+export PATH=$PATH:/usr/local/cuda/bin
+export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=/usr/local/cudnn-8.0:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$PYENV_ROOT/versions/anaconda3-2.2.0/envs/py2/lib"
+export LD_LIBRARY_PATH=/usr/lib/openblas-base:$LD_LIBRARY_PATH
+export PYTHONPATH=/media/junkado/hdd3tb/caffe/python/:$PYTHONPATH
+
+

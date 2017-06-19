@@ -1,0 +1,32 @@
+基本はmacと同じ
+
+マウントして
+sudo ./install-tl
+
+pathを追加
+/usr/local/texlive/2016/bin/x86_64-linux
+
+General:
+
+style: GTK+
+Color Scheme: Modern 
+
+commands:
+
+latex: platex -synctex=1 -interaction=nonstopmode %.tex
+DviPdf: dvipdfmx -f ptex-ipaex.map %.dvi
+Metapost: pmpost -interaction=nonstopmode %
+
+Build:
+
+Build & View: dvi-pdf-chain
+Default Compiler: latex
+
+Editor:
+Inline Checkingのチェックを外す
+
+Adv.Editor:
+
+Show Line Number: All Line Numbers
+Hacks/Workarounds: Try to~のチェックを外す
+　　　　　　　　　　　　　　　　　　Render Mode: Qt
