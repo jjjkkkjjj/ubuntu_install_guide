@@ -99,7 +99,7 @@ export PYTHONPATH=~/caffe/python/:$PYTHONPATH
 # Edit "~/profile" manually (Write below paths)
 # export PATH=$PATH:/usr/local/cuda/bin
 # export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
-# export LD_LIBRARY_PATH=/usr/local/cudnn-8.0:$LD_LIBRARY_PATH
+# export LD_LIBRARY_PATH=/usr/local/cudnn-5.1:$LD_LIBRARY_PATH
 # export LD_LIBRARY_PATH=/usr/lib/openblas-base:$LD_LIBRARY_PATH
-# export PYTHONPATH=~/caffe/python/:$PYTHONPATH
+# export PYTHONPATH=/media/junkado/hdd3tb/caffe/python/:$PYTHONPATH
 
