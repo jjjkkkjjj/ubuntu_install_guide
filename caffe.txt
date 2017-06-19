@@ -86,9 +86,14 @@ make runtest
 
 cd python
 sudo apt install python-pip
-for req in $(cat requirements.txt); do pip install $req: done
+for req in $(cat requirements.txt); 
+do 
+pip install $req
+done
+
 #sudo pip install -r requirements.txt
-make pycaffe -j8
+cd ../
+make pycaffe -j16
 export PYTHONPATH=~/caffe/python/:$PYTHONPATH
 
 # Edit "~/profile" manually (Write below paths)
