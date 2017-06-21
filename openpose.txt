@@ -1,0 +1,36 @@
+sudo apt-get install libopencv-dev
+
+cd 入れたいとこ
+git clone https://github.com/CMU-Perceptual-Computing-Lab/openpose.git
+
+cd openpose/3rdparty/caffe
+cp Makefile.config.Ubuntu16.example Makefile.config # Ubuntu 16, cuda 8
+
+~Makefile.config~
+ OPENCV_VERSION := 3
+
+# PYTHON_INCLUDE := /usr/include/python2.7 \
+#		/usr/lib/python2.7/dist-packages/numpy/core/include
+# Anaconda Python distribution is quite popular. Include path:
+# Verify anaconda location, sometimes it's in root.
+ ANACONDA_HOME := $(PYENV_ROOT)/versions/anaconda3-2.2.0/envs/py2
+ PYTHON_INCLUDE := $(ANACONDA_HOME)/include \
+		 $(ANACONDA_HOME)/include/python2.7 \
+		 $(ANACONDA_HOME)/lib/python2.7/site-packages/numpy/core/include
+
+# PYTHON_LIB := /usr/lib /usr/local/lib
+ PYTHON_LIB := $(ANACONDA_HOME)/lib
+
+
+make all -j${number_of_cpus} && make distribute -j${number_of_cpus}
+
+cd ../../models/
+./getModels.sh
+
+cd ..
+cp Makefile.config.Ubuntu16.example Makefile.config # Ubuntu 16, cuda 8
+↑と同様に
+~Makefile.config~
+ OPENCV_VERSION := 3
+
+make all -j${number_of_cpus}
