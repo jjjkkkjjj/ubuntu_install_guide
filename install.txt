@@ -62,5 +62,5 @@ google-drive-ocamlfuse
 ウェブが起動、ログイン
 
 google-drive-ocamlfuse ~/googledrive
-
+↑bashに書き込み
 
