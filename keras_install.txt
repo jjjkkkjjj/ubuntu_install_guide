@@ -22,3 +22,12 @@ m/tensorflow/linux/gpu/tensorflow_gpu-1.1.0-cp36-cp36m-linux_x86_64.whl
 
 pip install keras=1.2.2
 
+# make dataset
+cd path
+git clone https://github.com/tzutalin/ImageNet_Utils.git
+git submodule init
+git submodule update --recursive
+conda install pyqt=4.11
+cd labelImgGUI
+make all
+./labelImg.py
