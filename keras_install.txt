@@ -11,3 +11,14 @@ pip install --upgrade tensorflow-gpu
 pip install keras
 
 conda install -c conda-forge python-lmdb=0.92
+
+
+# deep learning
+
+activate py36-keras
+
+pip install --ignore-installed --upgrade https://storage.googleapis.co
+m/tensorflow/linux/gpu/tensorflow_gpu-1.1.0-cp36-cp36m-linux_x86_64.whl
+
+pip install keras=1.2.2
+
