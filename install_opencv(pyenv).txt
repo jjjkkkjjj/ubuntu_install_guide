@@ -24,4 +24,12 @@ cmake -D CMAKE_BUILD_TYPE=RELEASE -D BUILD_NEW_PYTHON_SUPPORT=ON -D BUILD_opencv
 make -j16
 sudo make install
 
+#another virtual environment
+
+export PYTHON_INCLUDE_DIRS=$PYENV_ROOT/versions/anaconda3-2.2.0/envs/py36-keras/include/python3.6m
+export PYTHON_LIBRARIES=$PYENV_ROOT/versions/anaconda3-2.2.0/envs/py36-keras/lib/libpython3.6m.so
+
+conda install libgcc
+
+cmake -D CMAKE_BUILD_TYPE=RELEASE -D BUILD_NEW_PYTHON_SUPPORT=ON -D BUILD_opencv_python2=OFF -D BUILD_opencv_python3=ON -D BUILD_TIFF=ON -D ENABLE_SOLUTION_FOLDERS=ON -D CMAKE_INSTALL_PREFIX=$HOME/opencv/opencvlibrary331 -D OPENCV_EXTRA_MODULES_PATH=$HOME/opencv/opencv-3.3.1/opencv_contrib-master/modules -D PYTHON3_EXECUTABLE=$PYENV_ROOT/versions/anaconda3-2.2.0/envs/py36-keras/bin/python3.6m -D PYTHON3_INCLUDE_DIR=$PYENV_ROOT/versions/anaconda3-2.2.0/envs/py36-keras/include/python3.6m -D PYTHON3_LIBRARY=$PYENV_ROOT/versions/anaconda3-2.2.0/envs/py36-keras/lib/libpython3.4m.so -D PYTHON3_NUMPY_INCLUDE_DIRS=$PYENV_ROOT/versions/anaconda3-2.2.0/envs/py36-keras/lib/python3.6/site-packages/numpy/core/include -D PYTHON3_PACKAGES_PATH=$PYENV_ROOT/versions/anaconda3-2.2.0/envs/py36-keras/lib/python3.6/site-packages -D WITH_TBB=ON -D WITH_V4L=ON -D WITH_QT=ON -D WITH_OPENGL=ON ..
 

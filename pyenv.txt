@@ -26,3 +26,4 @@ conda update conda
 
 conda create -n py2 python=2.7 anaconda
 
+conda create -n py36-keras python=3.6 anaconda
