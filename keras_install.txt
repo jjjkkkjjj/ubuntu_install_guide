@@ -23,11 +23,16 @@ m/tensorflow/linux/gpu/tensorflow_gpu-1.1.0-cp36-cp36m-linux_x86_64.whl
 pip install keras=1.2.2
 
 # make dataset
+conda create -n label python=2.7 anaconda
+conda uninstall pyqt
+conda install pyqt=4.11
+conda install -c https://conda.anaconda.org/menpo opencv3
+activate label
 cd path
 git clone https://github.com/tzutalin/ImageNet_Utils.git
+cd ImageNet_Utils/labelImgGUI
 git submodule init
 git submodule update --recursive
-conda install pyqt=4.11
-cd labelImgGUI
+
 make all
 ./labelImg.py
