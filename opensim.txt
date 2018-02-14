@@ -1,0 +1,29 @@
+cd 
+mkdir opensim
+sudo apt-get update
+sudo apt-get --yes install git cmake cmake-curses-gui freeglut3-dev libxi-dev libxmu-dev liblapack-dev swig python-dev openjdk-8-jdk
+sudo apt-get install libsimbody-dev simbody-doc
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+# git clone https://github.com/opensim-org/opensim-core.git
+mkdir opensim_dependencies_build
+cd opensim_dependencies_build
+cmake ../opensim-core/dependencies/ -DCMAKE_INSTALL_PREFIX='$HOME/opensim/opensim_dependencies_install' -DCMAKE_BUILD_TYPE=RelWithDebInfo
+make -j16
+cd ..
+mkdir opensim_build
+mkdir opensim_install
+cd opensim_build
+cmake ../opensim-core -DCMAKE_INSTALL_PREFIX="$HOME/opensim/opensim_install" -DCMAKE_BUILD_TYPE=RelWithDebInfo -DOPENSIM_DEPENDENCIES_DIR="$HOME/opensim/opensim_dependencies_install" -DBUILD_PYTHON_WRAPPING=ON -DBUILD_JAVA_WRAPPING=ON -DWITH_BTK=ON 
+make doxygen
+make -j16
+ctest -j16
+make -j16 install
+
+cd ~/opensim/opensim_install/lib/python2.7/site-packages/
+python setup.py install
+sudo cp ~/opensim/opensim_dependencies_install/BTK/lib/btk-0.4dev/* /usr/lib
+
+echo '# opensim' >> ~/.bashrc
+echo 'export PATH=~/opensim/opensim_install/bin:$PATH' >> ~/.bashrc
+
+sample program should be daownloaded from release(latest version)
