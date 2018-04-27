@@ -1,0 +1,6 @@
+# ちゃんと別のopencvが入っていないかチェック
+conda install ffmpeg
+conda config --remove channels conda-forge
+conda config --add channels conda-forge  
+conda install opencv
+

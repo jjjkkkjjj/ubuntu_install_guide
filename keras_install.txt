@@ -5,6 +5,7 @@ activate py2
 ~tensorflow~
 conda install nomkl numpy scipy scikit-learn numexpr
 pip install configobj
+(pip install grin)
 
 pip install --upgrade tensorflow-gpu 
 
@@ -20,6 +21,8 @@ activate py36-keras
 pip install --ignore-installed --upgrade https://storage.googleapis.co
 m/tensorflow/linux/gpu/tensorflow_gpu-1.1.0-cp36-cp36m-linux_x86_64.whl
 
+#cuda8.0,cudnn=5.1
+#pip install tensorflow-gpu==1.1.0
 pip install keras=1.2.2
 
 # make dataset
