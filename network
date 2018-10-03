@@ -40,3 +40,20 @@ iface enp0s3 inet static
 	dns-nameservers [ネームサーバ]
 
 sudo reboot
+
+
+# rsync and ssh for windows
+#install cygwin from https://cygwin.com
+set proxy
+インターネットオプション➔接続➔LANの設定➔プロキシサーバー➔プロキシサーバーを使用するがチェックされているか
+
+set server
+http + jp がよさ気？
+
+search "rsync", "ssh" net押してクリック（SSHはOpenSSH〜のやつ）
+
+環境変数
+bin ファイルのディレクトリ追加
+
+cygwinターミナル起動
+右クリック➔option➔text➔locale:ja_JP, character set:UTF-8
