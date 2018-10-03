@@ -1,6 +1,6 @@
 #github
 cd ~/.ssh
-ssh-keygen -t rsa -C test@example.com //←自分のメールアドレス
+ssh-keygen -t rsa
 
 chmod 600 id_rsa
 
@@ -57,3 +57,39 @@ bin ファイルのディレクトリ追加
 
 cygwinターミナル起動
 右クリック➔option➔text➔locale:ja_JP, character set:UTF-8
+
+sshは名前が漢字だと鍵登録厳しいかも．．．（無視でもいいかと）
+
+
+# when i update automatically, remote desktop setting will be changed...
+/opt/google/chrome-remote-desktop/chrome-remote-desktop --stop
+sudo gedit /opt/google/chrome-remote-desktop/chrome-remote-desktop
+FIRST_X_DISPLAY_NUMBERを「0」に設定
+FIRST_X_DISPLAY_NUMBERは、開くX-Windowの番号を設定するもの。一番最初のものが普段使っているものなので、「0」に設定する。
+
+436行目をコメントアウト
+436行目に、下記のようなコードがある。このコードは、その画面が利用されている画面に他のセッションを開く設定である。当然「利用している画面」を表示したいので、その部分をコメントアウト。
+
+   while os.path.exists(X_LOCK_FILE_TEMPLATE % display):
+   display += 1
+上記をコメントアウトする。
+
+719行目の一部をコメントアウト
+719行目に以下の様なコードがある。
+
+  def launch_session(self, x_args):
+    self._init_child_env()
+    self._setup_pulseaudio()
+    self._setup_gnubby()
+    self._launch_x_server(x_args)
+    self._launch_x_session()
+これを、下記のように「self._launch_x_server(x_args)」と「self._launch_x_session()」のみコメントアウトし、また一部の設定を追加する。
+
+  def launch_session(self, x_args):
+    self._init_child_env()
+    self._setup_pulseaudio()
+    self._setup_gnubby()
+    #self._launch_x_server(x_args)
+    #self._launch_x_session()
+    display = self.get_unused_display_number()
+    self.child_env["DISPLAY"] = ":%d" % display
