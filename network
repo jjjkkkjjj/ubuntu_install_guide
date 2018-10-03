@@ -1,0 +1,42 @@
+#github
+cd ~/.ssh
+ssh-keygen -t rsa -C test@example.com //←自分のメールアドレス
+
+chmod 600 id_rsa
+
+edit ~/.ssh/config
+↓
+Host github.com
+  HostName github.com
+  IdentityFile ~/.ssh/id_rsa
+  User git
+
+login github➔settings➔ssh keys➔register above ssh key
+
+# for as server
+sudo apt-get install openssh-server
+
+stablize ip address
+# address and netmask
+ifconfig
+# for gateway
+route -n
+# for dns nameserver
+cat /etc/resolv.conf
+
+
+cd /etc/network/
+edit interface
+↓
+auto lo
+iface lo inet loopback
+
+# interfaces(5) file used by ifup(8) and ifdown(8)
+auto enp0s3
+iface enp0s3 inet static
+	address [設定したいIPアドレス]
+	netmask [ネットマスク]
+	gateway [ゲートウェイ]
+	dns-nameservers [ネームサーバ]
+
+sudo reboot
