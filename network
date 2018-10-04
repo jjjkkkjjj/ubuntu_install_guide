@@ -59,7 +59,19 @@ cygwinターミナル起動
 右クリック➔option➔text➔locale:ja_JP, character set:UTF-8
 
 sshは名前が漢字だと鍵登録厳しいかも．．．（無視でもいいかと）
+➔.bashrcにalias 登録
+alias initssh='source ~/initssh.bash'
 
+initssh.bash作成
+# ssh
+if [ -f ~/.ssh-agent ]; then
+    . ~/.ssh-agent
+fi
+if [ -z "$SSH_AGENT_PID" ] || ! kill -0 $SSH_AGENT_PID; then
+    ssh-agent > ~/.ssh-agent
+    . ~/.ssh-agent
+fi
+ssh-add -1 >& /dev/null || ssh-add
 
 # when i update automatically, remote desktop setting will be changed...
 /opt/google/chrome-remote-desktop/chrome-remote-desktop --stop
