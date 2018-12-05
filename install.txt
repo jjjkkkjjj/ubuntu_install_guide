@@ -42,6 +42,10 @@ mozc追加
 マウスの向きが逆なら
 settingからマウス，natural scrollingにチェック
 
+.debファイル
+sudo dpkg -i *.deb
+sudo apt-get install -f
+
 〜pycharm,clion〜
 
 tar xzvf *.tar.gz
