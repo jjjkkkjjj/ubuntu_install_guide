@@ -39,6 +39,9 @@ keyboard input~ を fctix
 もう一回setting text entryで
 mozc追加
 
+マウスの向きが逆なら
+settingからマウス，natural scrollingにチェック
+
 〜pycharm,clion〜
 
 tar xzvf *.tar.gz
