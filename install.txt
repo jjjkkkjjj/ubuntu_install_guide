@@ -80,7 +80,7 @@ google-drive-ocamlfuse ~/googledrive
 こっちのほうがよさげ！！！！！
 sudo apt install gnome-control-center gnome-online-accounts 
 
-open gnorm control center
+open system settings
 click online accounts
 click google
 check files
