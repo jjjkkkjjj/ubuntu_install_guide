@@ -77,5 +77,14 @@ google-drive-ocamlfuse
 google-drive-ocamlfuse ~/googledrive
 ↑bashに書き込み
 
-usb for mac?
+こっちのほうがよさげ！！！！！
+sudo apt install gnome-control-center gnome-online-accounts 
+
+open gnorm control center
+click online accounts
+click google
+check files
+
+
+~usb for mac?~
 sudo apt-get install exfat-fuse exfat-utils
