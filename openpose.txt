@@ -123,5 +123,10 @@ export PYTHONPATH=/media/junkado/hdd3tb/openpose/3rdparty/caffe/python/:$PYTHONP
 pycharmではPYTHONPATHを何故か読み取らないので
 default settings-> interpreter-> more ->python2 ->show path~(一番下の変なアイコン) -> /media/junkado/hdd3tb/openpose/3rdparty/caffe/python/　を＋
 
-
+もし，libhdf5関連のエラーが出たら，(./build/examples/openpose/openpose.bin: error while loading shared libraries: libhdf5_hl.so.10: cannot open shared object file: No such file or directory
+)
+LD_LIBRARY_PATH（９６行目）のパスの中でsymbolic linkをはる
+cd 
+sudo ln -s libhdf5.so libhdf5.so.10
+sudo ln -s libhdf5_hl.so libhdf5_hl.so.1
 
